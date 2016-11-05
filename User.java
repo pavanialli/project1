@@ -1,8 +1,12 @@
 package com.niit.online.onlinebooksbackend.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="User")
@@ -10,11 +14,32 @@ import javax.persistence.Table;
 
 public class User {
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
+    
+    @NotNull(message="name should not be empty")
 	private String username;
+    
+    @NotNull(message="password should be 5 to 6 charactrs")
 	private String password;
-	private String emailid;
+    
+    
+    @Transient
+    private String confirmpassword;
+    
+    public String getConfirmpassword() {
+		return confirmpassword;
+	}
+	public void setConfirmpassword(String confirmpassword) {
+		this.confirmpassword = confirmpassword;
+	}
+	@NotNull(message="email should not be empty")
+    private String emailid;
+    
+    @NotNull(message="enter a number")
 	private String phno;
+    
+    
 	private String enabled;
 	public int getId() {
 		return id;

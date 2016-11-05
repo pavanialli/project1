@@ -10,15 +10,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.orm.hibernate4.HibernateTransactionManager;
-import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
+//import org.springframework.orm.hibernate4.HibernateTransactionManager;
+//import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.niit.online.onlinebooksbackend.dao.CategoryDAO;
+import com.niit.online.onlinebooksbackend.dao.CategoryDAOImpl;
 import com.niit.online.onlinebooksbackend.dao.ProductDAO;
 import com.niit.online.onlinebooksbackend.dao.ProductDAOImpl;
+import com.niit.online.onlinebooksbackend.dao.SupplierDAO;
+import com.niit.online.onlinebooksbackend.dao.SupplierDAOImpl;
 import com.niit.online.onlinebooksbackend.dao.UserDAO;
 import com.niit.online.onlinebooksbackend.dao.UserDAOImpl;
+import com.niit.online.onlinebooksbackend.model.Category;
 import com.niit.online.onlinebooksbackend.model.Product;
+import com.niit.online.onlinebooksbackend.model.Supplier;
 import com.niit.online.onlinebooksbackend.model.User;
 
 
@@ -54,8 +62,8 @@ public class ApplicationContextConfig {
 	    LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
 	    sessionBuilder.addProperties(getHibernateProperties());
 	 
-	 //sessionBuilder.addAnnotatedClasses(Category.class);
-	 // sessionBuilder.addAnnotatedClasses(Supplier.class);
+	 sessionBuilder.addAnnotatedClasses(Category.class);
+	 sessionBuilder.addAnnotatedClasses(Supplier.class);
 	  sessionBuilder.addAnnotatedClasses(Product.class);
 	   
 	  // sessionBuilder.addAnnotatedClasses(Cart.class);
@@ -79,7 +87,7 @@ public class ApplicationContextConfig {
 	 
 	    return transactionManager;
 	}
-	   /*@Autowired
+	   @Autowired
 		@Bean(name="categoryDAO")
 		public CategoryDAO getCategoryDAO(SessionFactory sessionFactory) {
 		    
@@ -92,7 +100,7 @@ public class ApplicationContextConfig {
 	    {
 	    	return new Category();
 	    }
-*/
+
 	    @Autowired
 		@Bean(name="productDAO")
 		public ProductDAO getProductDAO(SessionFactory sessionFactory) {
@@ -106,7 +114,7 @@ public class ApplicationContextConfig {
 	    {
 	    	return new Product();
 	    }
-	   /* @Autowired
+	    @Autowired
 		@Bean(name="supplierDAO")
 		public SupplierDAO getSupplierDAO(SessionFactory sessionFactory) {
 		    
@@ -118,7 +126,7 @@ public class ApplicationContextConfig {
 	    public Supplier getSupplier()
 	    {
 	    	return new Supplier();
-	    }*/
+	    }
 	   @Autowired
 		@Bean(name="userDAO")
 		public UserDAO getUserDetailsDAO(SessionFactory sessionFactory) {
@@ -133,9 +141,6 @@ public class ApplicationContextConfig {
 	    	 System.out.println("USER");
 	    	return new User();
 	    }
-
-
-
-
+	    
 }
 

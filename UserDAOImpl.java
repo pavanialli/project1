@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.niit.online.onlinebooksbackend.model.User;
 
 @Repository(value = "userDAO")
-@EnableTransactionManagement//
+@EnableTransactionManagement
 
 public class UserDAOImpl implements UserDAO {
 	

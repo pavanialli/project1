@@ -18,8 +18,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.niit.online.onlinebooksbackend.dao.CategoryDAO;
 import com.niit.online.onlinebooksbackend.dao.CategoryDAOImpl;
-import com.niit.online.onlinebooksbackend.dao.ProductDAO;
-import com.niit.online.onlinebooksbackend.dao.ProductDAOImpl;
+//import com.niit.online.onlinebooksbackend.dao.ProductDAO;
+//import com.niit.online.onlinebooksbackend.dao.ProductDAOImpl;
 import com.niit.online.onlinebooksbackend.dao.SupplierDAO;
 import com.niit.online.onlinebooksbackend.dao.SupplierDAOImpl;
 import com.niit.online.onlinebooksbackend.dao.UserDAO;
@@ -50,8 +50,8 @@ public class ApplicationContextConfig {
 	    Properties properties = new Properties();
 	    properties.put("hibernate.show_sql", "true");
 	    properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
-	    properties.put("hibernate.hbm2ddl.auto", "update");
-	    properties.put("hibernate.current_session_context_class", "thread");
+	    properties.put("hibernate.hbm2ddl.auto", "create");
+	   // properties.put("hibernate.current_session_context_class", "thread");
 	    System.out.println("Hibernate");
 	    return properties;
 	}
@@ -101,7 +101,7 @@ public class ApplicationContextConfig {
 	    	return new Category();
 	    }
 
-	    @Autowired
+	   /* @Autowired
 		@Bean(name="productDAO")
 		public ProductDAO getProductDAO(SessionFactory sessionFactory) {
 		    
@@ -113,7 +113,7 @@ public class ApplicationContextConfig {
 	    public Product getProduct()
 	    {
 	    	return new Product();
-	    }
+	    }*/
 	    @Autowired
 		@Bean(name="supplierDAO")
 		public SupplierDAO getSupplierDAO(SessionFactory sessionFactory) {

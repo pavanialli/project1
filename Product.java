@@ -7,39 +7,32 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name="product")
-
-    public class Product {
-    @Id
+@Component
+public class Product {
+	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	 private int productid;
-     private int price;
-     private int quatity;
-     private String prodname;
-     @Transient
-     private MultipartFile image;
-     
-     public MultipartFile getImage() {
+    private int productid;
+    private int price;
+    private int quatity;
+    private String prodname;
+    @Transient
+    private MultipartFile image;
+	public MultipartFile getImage() {
 		return image;
 	}
 	public void setImage(MultipartFile image) {
 		this.image = image;
 	}
 	public int getProductid() {
- 		return productid;
- 	}
- 	public void setProductid(int productid) {
- 		this.productid = productid;
- 	}
- 	
- 	 public int getQuatity() {
-		return quatity;
+		return productid;
 	}
-	public void setQuatity(int quatity) {
-		this.quatity = quatity;
+	public void setProductid(int productid) {
+		this.productid = productid;
 	}
 	public int getPrice() {
 		return price;
@@ -47,7 +40,12 @@ import org.springframework.web.multipart.MultipartFile;
 	public void setPrice(int price) {
 		this.price = price;
 	}
-
+	public int getQuatity() {
+		return quatity;
+	}
+	public void setQuatity(int quatity) {
+		this.quatity = quatity;
+	}
 	public String getProdname() {
 		return prodname;
 	}
@@ -55,7 +53,5 @@ import org.springframework.web.multipart.MultipartFile;
 		this.prodname = prodname;
 	}
 
-	{
-    	 
-     }  }  
 
+}

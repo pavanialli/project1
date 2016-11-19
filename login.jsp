@@ -34,7 +34,7 @@ welcome ${info}
 
 <tr>
    <td><input type="submit" value="login"/></td>
-   <td><input type= Reset" value="cancel"/></td>
+   <td><input type= "Reset" value="cancel"/></td>
 </tr>
 </table>
 </form>

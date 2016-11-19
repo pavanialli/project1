@@ -8,9 +8,11 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.stereotype.Component;
+
 @Entity
 @Table(name="User")
-
+@Component
 
 public class User {
     @Id
@@ -39,6 +41,7 @@ public class User {
     @NotNull(message="enter a number")
 	private String phno;
     
+    private String role;
     
 	private String enabled;
 	public int getId() {
@@ -48,7 +51,7 @@ public class User {
 		this.id = id;
 	}
 	
-	
+	//setter and getter methods
 	public String getUsername() {
 		return username;
 	}
@@ -78,6 +81,12 @@ public class User {
 	}
 	public void setEnabled(String enabled) {
 		this.enabled = enabled;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
 	}
 	
 }

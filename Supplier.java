@@ -6,17 +6,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.stereotype.Component;
+
 @Entity
 @Table(name="supplier")
- 
+@Component 
 public class Supplier {
 	   
-	    @Id
-	 	@GeneratedValue(strategy=GenerationType.AUTO)
-	 	
+	    
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)	
 	private String id;
 	private String name;
-	private String Address;
+	private String address;
 	public String getId() {
 		return id;
 	}
@@ -30,9 +32,10 @@ public class Supplier {
 		this.name = name;
 	}
 	public String getAddress() {
-		return Address;
+		return address;
 	}
 	public void setAddress(String address) {
-		Address = address;
+		this.address = address;
 	}
+	
 }

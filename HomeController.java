@@ -5,7 +5,9 @@ package com.frontend.controller;
 
 import javax.servlet.http.HttpServletRequest;
 //import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -15,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.online.onlinebooksbackend.dao.UserDAO;
 import com.niit.online.onlinebooksbackend.model.User;
 
 //import com.niit.online.onlinebooksbackend.model.User;
@@ -22,7 +25,8 @@ import com.niit.online.onlinebooksbackend.model.User;
 @Controller
 public class HomeController
 {
-@RequestMapping("/")
+
+  @RequestMapping("/")
 public String showhome()
 {
 	return "home";
@@ -35,9 +39,6 @@ public String showadmin()
 {
 	return "adminhome";
 	}
-
-
-//----------- Register page mapping------------//
 
 
 //-----------aboutus page mapping------------//
@@ -127,7 +128,16 @@ public ModelAndView checkUser(@RequestParam("loginName")String s1,@RequestParam(
 	return mv;
 		}
 
-//------mapping Register pg--------//
+//------mapping Spring Register pg--------//
+
+@ModelAttribute
+public User returnobject() {
+	return new User();
+}
+
+@Autowired
+UserDAO userDAO;
+
 @RequestMapping("/Register")
 public ModelAndView showRegister(@ModelAttribute("user")User user,BindingResult result,HttpServletRequest request)
 {
@@ -135,11 +145,15 @@ public ModelAndView showRegister(@ModelAttribute("user")User user,BindingResult 
      return mv;	
 }
 @RequestMapping(value="/addUser",method = RequestMethod.POST)
- public String addUser(@ModelAttribute("user")User user,ModelMap model,BindingResult result,HttpServletRequest request) {
-	model.addAttribute("name",user.getUsername());
+ public String addUser(@Valid @ModelAttribute("user")User user,ModelMap model,BindingResult result,HttpServletRequest request) {
+	System.out.println("in adduser method");
+	model.addAttribute("username",user.getUsername());
 	model.addAttribute("emailid",user.getEmailid());
 	model.addAttribute("id",user.getId());
-	model.addAttribute("phoneno",user.getEmailid());
+	model.addAttribute("phno",user.getEmailid());
+	user.setEnabled("true");
+	user.setRole("ROLE_USER");
+	userDAO.saveOrUpdate(user);
 	return "login";
 }
 

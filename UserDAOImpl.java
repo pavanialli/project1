@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.niit.online.onlinebooksbackend.model.User;
 
 @Repository(value = "userDAO")
-@EnableTransactionManagement
+//@EnableTransactionManagement
 
 public class UserDAOImpl implements UserDAO {
 	
@@ -40,13 +40,14 @@ public class UserDAOImpl implements UserDAO {
 	@Transactional//ACID either update evrgthg or not 
 	public boolean saveOrUpdate(User user) {
 		try {
-		Session s=sessionFactory.getCurrentSession();
+		/*Session s=sessionFactory.getCurrentSession();
 		Transaction t=s.beginTransaction();
 		s.saveOrUpdate(user);
 		t.commit();//either comit or rollback transaction incomplete
 		return true;
-			//sessionFactory.getCurrentSession().saveOrUpdate(user);
-			//return true;
+*/			
+			sessionFactory.getCurrentSession().saveOrUpdate(user);
+			return true;
 		} 
 		catch (Exception e) {
 			e.printStackTrace();

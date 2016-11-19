@@ -10,14 +10,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+//import org.springframework.orm.hibernate5.HibernateTransactionManager;
+//import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
-//import org.springframework.orm.hibernate4.HibernateTransactionManager;
-//import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.niit.online.onlinebooksbackend.dao.CategoryDAO;
 import com.niit.online.onlinebooksbackend.dao.CategoryDAOImpl;
+import com.niit.online.onlinebooksbackend.dao.ProductDAO;
+import com.niit.online.onlinebooksbackend.dao.ProductDAOImpl;
 //import com.niit.online.onlinebooksbackend.dao.ProductDAO;
 //import com.niit.online.onlinebooksbackend.dao.ProductDAOImpl;
 import com.niit.online.onlinebooksbackend.dao.SupplierDAO;
@@ -26,12 +28,14 @@ import com.niit.online.onlinebooksbackend.dao.UserDAO;
 import com.niit.online.onlinebooksbackend.dao.UserDAOImpl;
 import com.niit.online.onlinebooksbackend.model.Category;
 import com.niit.online.onlinebooksbackend.model.Product;
+//import com.niit.online.onlinebooksbackend.model.Product;
+//simport com.niit.online.onlinebooksbackend.model.Product;
 import com.niit.online.onlinebooksbackend.model.Supplier;
 import com.niit.online.onlinebooksbackend.model.User;
 
 
 @Configuration
-@ComponentScan("com.niit")
+@ComponentScan("com")
 @EnableTransactionManagement
 
 public class ApplicationContextConfig {
@@ -50,7 +54,7 @@ public class ApplicationContextConfig {
 	    Properties properties = new Properties();
 	    properties.put("hibernate.show_sql", "true");
 	    properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
-	    properties.put("hibernate.hbm2ddl.auto", "create");
+	    properties.put("hibernate.hbm2ddl.auto", "update");
 	   // properties.put("hibernate.current_session_context_class", "thread");
 	    System.out.println("Hibernate");
 	    return properties;
@@ -101,30 +105,31 @@ public class ApplicationContextConfig {
 	    	return new Category();
 	    }
 
-	   /* @Autowired
+	    @Autowired
 		@Bean(name="productDAO")
 		public ProductDAO getProductDAO(SessionFactory sessionFactory) {
 		    
 		 
 		    return new ProductDAOImpl(sessionFactory);
 		}
-	    @Autowired
+	   @Autowired
 	    @Bean(name="product")
 	    public Product getProduct()
 	    {
 	    	return new Product();
-	    }*/
+	    }
 	    @Autowired
 		@Bean(name="supplierDAO")
 		public SupplierDAO getSupplierDAO(SessionFactory sessionFactory) {
 		    
-		 
+	    	 System.out.println("supplierDAO");
 		    return new SupplierDAOImpl(sessionFactory);
 		}
 	    @Autowired
 	    @Bean(name="supplier")
 	    public Supplier getSupplier()
-	    {
+	    {  
+	    	System.out.println("Supplier");
 	    	return new Supplier();
 	    }
 	   @Autowired

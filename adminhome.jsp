@@ -22,18 +22,18 @@
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Products<span class="caret"></span></a>
         <ul class="dropdown-menu">
         
-         <li><a href="addProduct"></span>products</a></li>
+       
         
           <li><a href="#">Update product</a></li>
           <li><a href="#">Delete product</a></li>
-          <li><a href="#">Add product</a></li>
+          <li><a href="addProduct">Add product</a></li>
            <li><a href="#">View product</a></li>
         </ul>
         
         
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Categorys<span class="caret"></span></a>
         <ul class="dropdown-menu">
-        <li><a href="addCategory"></span>Category</a></li>
+     
           <li><a href="#">Update Categorys</a></li>
           <li><a href="#">Delete Categorys</a></li>
           <li><a href="#">Add Categorys</a></li>
@@ -43,11 +43,10 @@
       
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Supplier<span class="caret"></span></a>
         <ul class="dropdown-menu">
-          <li><a href="addSupplier"></span>Supplier</a></li>
+          <li><a href="addSupplier"></span>Add Supplier</a></li>
           <li><a href="#">Update Supplier</a></li>
           <li><a href="#">Delete Supplier</a></li>
-          <li><a href="#">Add Supplier</a></li>
-           <li><a href="#">View Supplier</a></li></ul>
+          <li><a href="#">View Supplier</a></li></ul>
         
        <!--   <ul class="nav navbar-nav navbar-right"> -->
         <li><a href="logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>

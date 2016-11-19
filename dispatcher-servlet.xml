@@ -8,11 +8,11 @@
                            http://www.springframework.org/schema/mvc/spring-mvc.xsd
                            http://www.springframework.org/schema/context
                            http://www.springframework.org/schema/context/spring-context.xsd ">
-
+ 
  
 
  <mvc:annotation-driven />
-  <context:component-scan base-package="com.frontend" />
+  <context:component-scan base-package="com" />
  
  <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
  <property name="prefix">
@@ -23,8 +23,7 @@
  </property>
  </bean>
  
- <!-- to uplaod pics 
-  --><bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+ <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
  <property name="maxUploadSize" value="5242880">
  </property>
  </bean>
@@ -32,4 +31,3 @@
   <mvc:resources mapping="/resources/**"  location="/resources/"></mvc:resources>
  
 </beans>
- 

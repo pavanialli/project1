@@ -12,14 +12,9 @@
 </center>
 
 
-<form:form method="POST" action="addProd" commandName="product">
+<form:form method="POST" action="addProd" commandName="product" enctype="multipart/form-data">
 
    <table>
-  <%--  <tr>
-        <td><form:label path="prouctid">Productid</form:label></td>
-        <td><form:input path="prouctid"/></td>
-    </tr>
-   --%> 
     <tr>
         <td><form:label path="prodname">ProductName</form:label></td>
         <td><form:input path="prodname"/></td>
@@ -35,7 +30,7 @@
     
      <tr>
         <td><form:label path="image">Image</form:label></td>
-        <td><form:input path="image"/></td>
+        <td><form:input type="file" path="image"/></td>
     </tr>
     
     <tr>

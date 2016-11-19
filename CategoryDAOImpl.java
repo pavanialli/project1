@@ -2,9 +2,11 @@ package com.niit.online.onlinebooksbackend.dao;
 
 import java.util.List;
 
+
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.stereotype.Repository;
+@Repository("categoryDAO")
 public class CategoryDAOImpl implements CategoryDAO {
 	
 	

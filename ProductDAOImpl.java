@@ -2,6 +2,7 @@ package com.niit.online.onlinebooksbackend.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -14,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.niit.online.onlinebooksbackend.model.Product;
 
 @Repository(value = "productDAO")
-@EnableTransactionManagement
+//@EnableTransactionManagement
 
 public class ProductDAOImpl implements ProductDAO {
 
@@ -25,21 +26,41 @@ public class ProductDAOImpl implements ProductDAO {
 		// super();
 		this.sessionfactory = sessionfactory;
 	}
+	public ProductDAOImpl() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 
 	public boolean delete(Product product) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
+	
+	
+	@Transactional
 	public Product get(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		/*Session s = sessionfactory.getCurrentSession();
+    	Transaction tx = s.beginTransaction();*/
+    	String hql = "from Product where productid=" +id ;
+		Query query = sessionfactory.getCurrentSession().createQuery(hql);
+		@SuppressWarnings({ "unchecked", "deprecation" }) 
+		List<Product> list = query.list();
+		if(list == null)
+			return null;
+		else
+		{
+			//tx.commit();
+			return list.get(0);
+		}
 	}
+	
     @Transactional
 	public List<Product> list() {
-    	Session s = sessionfactory.getCurrentSession();
+    	/*Session s = sessionfactory.getCurrentSession();
     	Transaction tx = s.beginTransaction();
-    	List<Product> list =s.createCriteria(Product.class).list();
+*/    	
+    	List<Product> list =sessionfactory.getCurrentSession().createCriteria(Product.class).list();
 		return list;
 	}
 
@@ -58,4 +79,6 @@ public class ProductDAOImpl implements ProductDAO {
 			return false;
 		}
 	}
+
+	
 }

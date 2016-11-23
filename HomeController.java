@@ -1,12 +1,10 @@
 package com.frontend.controller;
-
-//import java.io.IOException;
-//import java.io.PrintWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
-//import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -14,7 +12,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.niit.online.onlinebooksbackend.dao.UserDAO;
@@ -108,25 +105,34 @@ public void checkuser(HttpServletRequest req,HttpServletResponse res) throws IOE
 		out.println("Invalid");
 	}
 }*/
+@Autowired 
+UserDAO userDAO;
+@Autowired
+User user;
 @RequestMapping("/validate")
-public ModelAndView checkUser(@RequestParam("loginName")String s1,@RequestParam("passwd")String s2)
+public ModelAndView checkUser(HttpServletRequest request,HttpServletResponse response)
 		{
-	String message;
 	ModelAndView mv;
-	if(s1.equals("pa")&&s2.equals("pa"))
+	String s1,s2;
+	s1=request.getParameter("loginName");
+	s2=request.getParameter("passwd");
+	mv=new ModelAndView("login");
+	user = userDAO.get(s1);
+	//systeoutprint(user.getID());
+	if(user.getRole().equals("ROLE_ADMIN"))
 	{
-		message="valid";
 		mv=new ModelAndView("adminhome");
-		mv.addObject("info",message);
 	}
-	else
+	else if(user.getRole().equals("ROLE_USER"))
 	{
-		message="invalid";
-		mv=new ModelAndView("login");
-		mv.addObject("info",message);	
-	}
+		mv=new ModelAndView("home");
+		}
 	return mv;
 		}
+    public Object returnObject()
+    {
+    	return new User();
+    }
 
 //------mapping Spring Register pg--------//
 
@@ -135,8 +141,6 @@ public User returnobject() {
 	return new User();
 }
 
-@Autowired
-UserDAO userDAO;
 
 @RequestMapping("/Register")
 public ModelAndView showRegister(@ModelAttribute("user")User user,BindingResult result,HttpServletRequest request)
@@ -156,7 +160,6 @@ public ModelAndView showRegister(@ModelAttribute("user")User user,BindingResult 
 	userDAO.saveOrUpdate(user);
 	return "login";
 }
-
 }
 
 

@@ -17,8 +17,10 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -37,8 +39,11 @@ public class products {
 	ProductDAO productDAO;
 	
 	@RequestMapping("/addProduct")
-	public String show() {
-		return "addProduct";
+	public ModelAndView showAddProduct(Model model) {
+		System.out.println("in product");
+		ModelAndView mv=new ModelAndView("addProduct");
+		model.addAttribute("productlist",productDAO.list());
+		return mv;
 	}
 
 	// ------------ addproduct.jsp page------------ //
@@ -59,10 +64,23 @@ public class products {
 	// ------------ addSupplier.jsp page------------ //
 
 	
-	@RequestMapping("/viewdetail")
-	public String show4() {
-		return "viewdetail";
-	}
+	
+	@RequestMapping(value="/viewdetail")
+	
+    public ModelAndView showViewDetails(@RequestParam("id") String id,Model model)throws Exception
+	{
+		//String pid=id;
+		System.out.println("viewproduct paaaaaage");
+		int i=Integer.parseInt(id);
+			//ModelAndView mv = new ModelAndView("viewdetail");
+			
+			model.addAttribute("productlist", productDAO.list());
+			Product product=productDAO.get(i);
+			
+			return new ModelAndView("viewdetail","product",product);
+}
+	
+	
 	
 	// ------------ Viewdetail.jsp page------------ //
 	
@@ -96,6 +114,9 @@ public class products {
 		}
 
 		productDAO.saverOrUpdate(product);
+		
+		model.addAttribute("message","product added successfully");
+		model.addAttribute("productList",productDAO.list());
         return "product";
 	}
 	

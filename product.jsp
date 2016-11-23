@@ -1,4 +1,40 @@
-<%@include file="header.jsp" %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Insert title here</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
+  <script type="text/javascript">
+  var app = angular.module('myApp', []);
+
+	function MyController($scope, $http) {
+		$scope.sortType = 'name'; // set the default sort type
+		$scope.sortReverse = false; // set the default sort order
+		$scope.searchPTitle = '';
+
+		$scope.getDataFromServer = function() {
+			$http({
+				method : 'GET',
+				url : 'GsonCon'
+			}).success(function(data, status, headers, config) {
+				$scope.prod = data;
+			}).error(function(data, status, headers, config) {
+				// called asynchronously if an error occurs
+				// or server returns response with an error status.
+			});
+		};
+	};
+  
+  </script>
+  </head>
+  <body>
+  
 <%-- <div>
  <div class="container">
   <div ng-app="myApp" ng-controller="dataCtrl"> <!-- //AngularJS -->
@@ -22,8 +58,8 @@
    </tr>
    </table>
   </div>
-  </div>
- --%>
+  </div> --%>
+ 
 
 <div class="container" ng-app="myApp" ng-controller="MyController" ng-init="getDataFromServer()">
 
@@ -84,10 +120,10 @@
            		<td><img src="resources/images/{{p1.prodname}}.jpg" style="height:100px;width:100px"></td>
            		
    
-      <!--  <td><a href="Deleteproduct&{{p1.id}}">Delete</a></td>
-        <td><a href="Updateprod&{{p1.id}}">Edit</a></td>  
+     <!--  <td><a href="Deleteproduct&{{p1.id}}">Delete</a></td>
+        <td><a href="Updateprod&{{p1.id}}">Edit</a></td>   -->
  
- <td><a href="viewDetail?{{p1.id}}">view</a>   -->     	
+ <td><a href="viewdetail?id={{p1.productid}}">view</a>  	
       </tr>
     </tbody>
     </table>

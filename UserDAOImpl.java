@@ -1,5 +1,8 @@
 package com.niit.online.onlinebooksbackend.dao;
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 //import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -18,11 +21,11 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Autowired
 	SessionFactory sessionFactory;
-	public boolean isValidate(String userid, String passwd) {
+	public boolean isValidate(String loginName, String passwd) {
 		// TODO Auto-generated method stub
 		
 	
-		 if(userid.equals("pa")&&passwd.equals("pa"))
+		 if(loginName.equals("pa")&&passwd.equals("pa"))
 		{
 			//b=true;
 		 return true;
@@ -32,6 +35,7 @@ public class UserDAOImpl implements UserDAO {
 		   return false;
 		}
 	}
+	
 	public UserDAOImpl(SessionFactory sessionFactory) {
 		super();
 		this.sessionFactory = sessionFactory;
@@ -40,14 +44,14 @@ public class UserDAOImpl implements UserDAO {
 	@Transactional//ACID either update evrgthg or not 
 	public boolean saveOrUpdate(User user) {
 		try {
-		/*Session s=sessionFactory.getCurrentSession();
+		Session s=sessionFactory.getCurrentSession();
 		Transaction t=s.beginTransaction();
 		s.saveOrUpdate(user);
 		t.commit();//either comit or rollback transaction incomplete
 		return true;
-*/			
-			sessionFactory.getCurrentSession().saveOrUpdate(user);
-			return true;
+
+			/*sessionFactory.getCurrentSession().saveOrUpdate(user);
+			return true;*/
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
@@ -55,5 +59,35 @@ public class UserDAOImpl implements UserDAO {
 		// TODO Auto-generated method stub
 		return false;
 	}
+    @Transactional
+	public User get(String uname) {
+    System.out.println("Inside get method");
+		
+		/*Session s=  sessionFactory.getCurrentSession();
+		Transaction tx=s.beginTransaction();*/
+		String str="From User where username='"+uname+"'";
+		
+		Query query=sessionFactory.getCurrentSession().createQuery(str);
+		List<User>ulist=query.list();
+		
+		if((ulist!=null) && ulist.isEmpty())
+		{
+			System.out.println("fetch frm user");
+			//tx.commit();
+		}
+
+		return ulist.get(0);
+	}
+
+	public List<User> list() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public boolean delete(User user) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 	
 }

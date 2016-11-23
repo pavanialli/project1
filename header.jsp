@@ -9,27 +9,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
-  <script>
-  var app = angular.module('myApp',[]);
-       function MyController($scope, $http) {
-    	   $scope.sortType = 'name';//set the default sort type
-    	   $scope.sortReverse=false;//set the default sort order
-    	   $scope.searchPtitle='';
-    	        
-    	      $scope.getDataFromServer = function() {
-    	    	  $http({
-    	    		   method :'GET',
-    	    		   url : 'GsonCon'
-    	    	  }).success(function(data,status,headers,config){
-    	    		  $scope.prod = data;
-    	    	  }).error(funnction(data, status, headers,config){
-    	    		  //called asynchonously if an error occurs
-    	    		  //or server returns response with an error status.
-    	    	  });
-    	    };
-   };
-  </script>
+  
   </head>
   <body>
   <nav class="navbar navbar-inverse">

@@ -38,6 +38,9 @@ public class products {
 	@Autowired
 	ProductDAO productDAO;
 	
+	@Autowired
+	Product product;
+	
 	@RequestMapping("/addProduct")
 	public ModelAndView showAddProduct(Model model) {
 		System.out.println("in product");
@@ -60,6 +63,11 @@ public class products {
 	public String show2() {
 		return "addSupplier";
 	}*/
+	
+	@RequestMapping("/manageproduct")
+	public String show3() {
+		return "manageproduct";
+	}
 
 	// ------------ addSupplier.jsp page------------ //
 
@@ -155,4 +163,46 @@ public class products {
 		supplierDAO.saveOrUpdate(supplier);
 		return "login";
 	}
+
+
+@RequestMapping(value = "/deleteproduct&{id}")
+public ModelAndView deleteproduct(@PathVariable("id") String id) throws Exception 
+		{
+			System.out.println("deleting prod");
+			int i=Integer.parseInt(id);
+			product = productDAO.get(i);
+			ModelAndView mv =new ModelAndView("manageproduct");
+			productDAO.delete(product);
+			mv.addObject("manageproduct",0);
+			return mv;
+		}
+		
+
+@RequestMapping("/updateproduct")
+public String show5() {
+	return "updateproduct";
 }
+
+@RequestMapping("updateproduct&{id}")
+public String updateproduct(@PathVariable("id") String id,@ModelAttribute("product") Product product,BindingResult result, Model model) {
+			//log.debug("Starting");
+	       int i=Integer.parseInt(id);
+			product = productDAO.get(i);
+			
+	if (product != null) {
+		//productDAO.saveOrUpdate(category);
+		model.addAttribute("message","Succesfully updated");
+	} else {
+		model.addAttribute("errorMessage", "Could not be updated");
+	}
+	//log.debug("Ending");
+	return "manageproduct";
+}
+}
+
+
+
+
+
+
+

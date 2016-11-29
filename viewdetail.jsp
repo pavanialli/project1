@@ -1,4 +1,11 @@
 <%@include file="header.jsp" %>
+
+<style>
+body{background: url('resources/images/pro.jpg') no-repeat center center fixed;
+     background-size: cover;
+}
+</style>
+
 <div>
 <div class="container">
   <div ng-app="myApp" ng-controller="dataCtrl"> <!-- //AngularJS -->

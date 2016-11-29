@@ -19,17 +19,17 @@ body{background: url('resources/images/bglogin.jpg') no-repeat center center fix
 
 welcome ${info}
 
-<form action="validate"method="get">
+<form action="perform_login"method="POST">
 
 <table border=3>
 <tr>
    <td>login id:</td>
-   <td><input type="text"name="loginName" required autofocus placeholder="Enter only Capslock"/></td>
+   <td><input type="text"name="username" placeholder="Enter only Capslock"/></td>
 </tr>
 
 <tr>
     <td>password:</td>
-    <td><input type="Password"name="passwd" required/></td> 
+    <td><input type="Password"name="password"/></td> 
 </tr>
 
 <tr>
@@ -38,7 +38,7 @@ welcome ${info}
 </tr>
 </table>
 </form>
-</p>
+
 </center>
 </body>
 </html>

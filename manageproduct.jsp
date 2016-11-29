@@ -5,12 +5,6 @@
 <head>
 <title>Insert title here</title>
 
-<style>
-body{background: url('resources/images/pro.jpg') no-repeat center center fixed;
-     background-size: cover;
-}
-</style>
-
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -41,33 +35,7 @@ body{background: url('resources/images/pro.jpg') no-repeat center center fixed;
   </head>
   <body>
   
-<%-- <div>
- <div class="container">
-  <div ng-app="myApp" ng-controller="dataCtrl"> <!-- //AngularJS -->
- 
-   <hr></hr>
-   <table class="table table-striped">
-   <tr>
-   <th>Id</th>
-   <th>Product Name</th>
-   <th>Product Price</th>
-   <th>Quantity</th>
-   <th>Product Image</th>
-   </tr>
-       <tr>
-           <td>${product.productid}</td>
-           <td>${product.prodname}</td>
-           <td>${product.price}</td>
-           <td>${product.quatity}</td>
-           <td><img src="resources/images/${product.prodname}.jpg" style=height:100px;width:100px;"/></td>
-           <td><a href="viewdetail?id=${product.productid}">View</a>
-   </tr>
-   </table>
-  </div>
-  </div> --%>
- 
-
-<div class="container" ng-app="myApp" ng-controller="MyController" ng-init="getDataFromServer()">
+  <div class="container" ng-app="myApp" ng-controller="MyController" ng-init="getDataFromServer()">
 
   <form>
     <div class="form-group">
@@ -126,16 +94,12 @@ body{background: url('resources/images/pro.jpg') no-repeat center center fixed;
            		<td><img src="resources/images/{{p1.prodname}}.jpg" style="height:100px;width:100px"></td>
            		
    
-     <!--  <td><a href="Deleteproduct&{{p1.id}}">Delete</a></td>
-        <td><a href="Updateprod&{{p1.id}}">Edit</a></td>   -->
- 
- <td><a href="viewdetail?id={{p1.productid}}">view</a>  	
-      </tr>
+    <td><a href="deleteproduct&{{p1.productid}}">Delete</a></td>
+    <td><a href="updateproduct&{{p1.productid}}">Edit</a></td>
+    </tr>
     </tbody>
     </table>
-  
+  <center><a href="addProduct"><h1 align="center"><h3><font color="Black">Back</a></center>
 </div>
-
-
 
 

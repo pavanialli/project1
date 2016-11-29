@@ -60,7 +60,7 @@ public class UserDAOImpl implements UserDAO {
 		return false;
 	}
     @Transactional
-	public User get(String uname) {
+	public User getByName(String uname) {
     System.out.println("Inside get method");
 		
 		/*Session s=  sessionFactory.getCurrentSession();

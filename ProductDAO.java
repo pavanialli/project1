@@ -10,6 +10,6 @@ public interface ProductDAO {
 	public boolean delete(Product product);
 	public Product get(int id);
 	public List<Product>list();
-	 
+	public boolean update(Product product);  //to find and replace select word ctrl C and ctrl F 
 
 }

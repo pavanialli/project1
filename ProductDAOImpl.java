@@ -2,6 +2,7 @@ package com.niit.online.onlinebooksbackend.dao;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -30,11 +31,32 @@ public class ProductDAOImpl implements ProductDAO {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	public boolean update(Product product) {
+		try{
+			  sessionfactory.getCurrentSession().update(product);
+			  return true;
+			  }
+		catch(Exception e){ 
+		e.printStackTrace(); 
+		return false; 
+		} 
+		
+	}
 
 
+	 @Transactional
 	public boolean delete(Product product) {
-		// TODO Auto-generated method stub
+		try {
+			/*Session s = sessionfactory.getCurrentSession();
+	    	Transaction tx = s.beginTransaction();*/
+			sessionfactory.getCurrentSession().delete(product);
+	    	//tx.commit();
+		return true;
+	} catch (HibernateException e) {
+		e.printStackTrace();
 		return false;
+	}
 	}
 	
 	
@@ -63,8 +85,8 @@ public class ProductDAOImpl implements ProductDAO {
     	List<Product> list =sessionfactory.getCurrentSession().createCriteria(Product.class).list();
 		return list;
 	}
-
-	@Transactional
+    
+    @Transactional
 	public boolean saverOrUpdate(Product product) {
 		try {
 			/*Session s = sessionfactory.getCurrentSession();
@@ -79,6 +101,5 @@ public class ProductDAOImpl implements ProductDAO {
 			return false;
 		}
 	}
-
 	
 }

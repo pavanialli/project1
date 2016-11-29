@@ -1,23 +1,33 @@
 package com.frontend.controller;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Collection;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.niit.online.onlinebooksbackend.dao.CategoryDAO;
 import com.niit.online.onlinebooksbackend.dao.UserDAO;
+import com.niit.online.onlinebooksbackend.model.Category;
 import com.niit.online.onlinebooksbackend.model.User;
 
 //import com.niit.online.onlinebooksbackend.model.User;
+
+
 
 @Controller
 public class HomeController
@@ -28,6 +38,17 @@ public String showhome()
 {
 	return "home";
 	}
+  
+  
+  @Autowired
+  Category Category;
+  
+  @Autowired
+  CategoryDAO CategoryDAO;
+  
+
+  
+  
 
 //----------- admin page mapping------------//
 
@@ -117,7 +138,7 @@ public ModelAndView checkUser(HttpServletRequest request,HttpServletResponse res
 	s1=request.getParameter("loginName");
 	s2=request.getParameter("passwd");
 	mv=new ModelAndView("login");
-	user = userDAO.get(s1);
+	//user = userDAO.get(s1);
 	//systeoutprint(user.getID());
 	if(user.getRole().equals("ROLE_ADMIN"))
 	{
@@ -133,6 +154,57 @@ public ModelAndView checkUser(HttpServletRequest request,HttpServletResponse res
     {
     	return new User();
     }
+    
+    @RequestMapping(value="/login_session_attributes")
+	public String login_session_attributes(HttpSession session,Model model,@RequestParam(value="username")String id){
+		String name=SecurityContextHolder.getContext().getAuthentication().getName();
+		
+		System.out.println("inside security check");
+		
+		session.setAttribute("name", name);
+		System.out.println(name);
+		
+		user=userDAO.getByName(id);
+		int x=user.getId();
+		session.setAttribute("loggedInUser", user.getUsername());
+    	session.setAttribute("loggedInUserID", x);
+    	
+		session.setAttribute("LoggedIn", "true");
+		
+		@SuppressWarnings("unchecked")
+		Collection<GrantedAuthority> authorities =(Collection<GrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+		
+		String role="ROLE_USER";
+		for(GrantedAuthority authority : authorities)
+		{
+			if(authority.getAuthority().equals(role))
+			{
+				System.out.println(role);
+				return "home";
+			}
+			else
+			{
+				session.setAttribute("isAdmin", "true");
+			}
+			}
+		return "adminhome" ;
+		
+		
+	}
+	
+	@RequestMapping("/perform_logout")
+	public ModelAndView logout(HttpServletRequest request,HttpSession session){
+		ModelAndView mv=new ModelAndView("home");
+		session.invalidate();
+		session=request.getSession(true);
+		//session.setAttribute("category", category);
+		//session.setAttribute("categoryList", categoryDAO.list());
+		
+		mv.addObject("logOutMessage", "You have successfully logged out!");
+		mv.addObject("loggedout","true");
+		
+		return mv;
+}
 
 //------mapping Spring Register pg--------//
 

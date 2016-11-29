@@ -22,12 +22,12 @@ body{background: url('resources/images/reg.jpg') no-repeat center center fixed;
         <td><form:input path="username" /></td>
     </tr>--%>
    
-    <tr padding="20">
+    <tr padding="50">
         <td><form:label path="username">User Name</form:label></td>
         <td><form:input path="username" /></td>
     </tr>
     
-    <tr>
+    <tr padding="50">
         <td><form:label path="emailid">Email Address</form:label></td>
         <td><form:input path="emailid" /></td>
     </tr>

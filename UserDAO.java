@@ -7,7 +7,7 @@ import com.niit.online.onlinebooksbackend.model.User;
 public interface UserDAO {
  public boolean isValidate(String loginName,String passwd);
  public boolean saveOrUpdate(User user);//details about user 
- public User get(String uname);
+ public User getByName(String uname);
  public List<User>list();
  public boolean delete(User user );
 }

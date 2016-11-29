@@ -21,19 +21,15 @@
       <li class="active"><a href="#">Home</a></li>
       <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Products<span class="caret"></span></a>
         <ul class="dropdown-menu">
-        
-       
-        
-          <li><a href="#">Update product</a></li>
-          <li><a href="#">Delete product</a></li>
+        <!-- <li><a href="#">Update product</a></li>
+          <li><a href="#">Delete product</a></li> -->
           <li><a href="addProduct">Add product</a></li>
-           <li><a href="#">View product</a></li>
+           <li><a href="manageproduct">View product</a></li>
         </ul>
         
         
         <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Categorys<span class="caret"></span></a>
         <ul class="dropdown-menu">
-     
           <li><a href="#">Update Categorys</a></li>
           <li><a href="#">Delete Categorys</a></li>
           <li><a href="#">Add Categorys</a></li>

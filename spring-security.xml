@@ -17,9 +17,10 @@
 		<intercept-url pattern="/addCategory" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/addProduct" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/addSupplier" access="hasRole('ROLE_ADMIN')" />
-
+		 <intercept-url pattern="/manageproduct" access="hasRole('ROLE_ADMIN')" />
+ 
 		<!-- access denied page -->
-		<access-denied-handler error-page="/login" />
+		<access-denied-handler error-page="/denied" />
 		<form-login login-page="/login" default-target-url="/"
 			login-processing-url="/perform_login" authentication-failure-url="/login"
 			authentication-success-forward-url="/login_session_attributes" />

@@ -26,10 +26,13 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
+import com.niit.online.onlinebooksbackend.dao.CategoryDAO;
 import com.niit.online.onlinebooksbackend.dao.ProductDAO;
 import com.niit.online.onlinebooksbackend.dao.SupplierDAO;
+import com.niit.online.onlinebooksbackend.model.Category;
 import com.niit.online.onlinebooksbackend.model.Product;
 import com.niit.online.onlinebooksbackend.model.Supplier;
+
 
 
 @Controller
@@ -45,16 +48,20 @@ public class products {
 	public ModelAndView showAddProduct(Model model) {
 		System.out.println("in product");
 		ModelAndView mv=new ModelAndView("addProduct");
-		model.addAttribute("productlist",productDAO.list());
+		/*to get list of categories , supplier id's*/
+		model.addAttribute("productList", productDAO.list());
+		model.addAttribute("categoryList", categoryDAO.list());
+		model.addAttribute("supplierList", supplierDAO.list());
+		
 		return mv;
 	}
 
 	// ------------ addproduct.jsp page------------ //
 
-	@RequestMapping("/addCategory")
+	/*@RequestMapping("/addCategory")
 	public String show1() {
 		return "addCategory";
-	}
+	}*/
 
 	// ------------ addCategory.jsp page------------ //
 	
@@ -125,6 +132,8 @@ public class products {
 		
 		model.addAttribute("message","product added successfully");
 		model.addAttribute("productList",productDAO.list());
+		model.addAttribute("categoryList", categoryDAO.list());
+		model.addAttribute("supplierList", supplierDAO.list());
         return "product";
 	}
 	
@@ -146,25 +155,63 @@ public class products {
 	@Autowired
 	SupplierDAO supplierDAO;
 	
+	@Autowired
+	Supplier supplier;
+	
 	@RequestMapping("/addSupplier")
 	public ModelAndView showSupplier(@ModelAttribute("supplier")Supplier supplier,BindingResult result,HttpServletRequest request)
 	{
 		ModelAndView mv=new ModelAndView("addSupplier");
 	     return mv;	
 	}
-	@RequestMapping(value="/addsupp",method = RequestMethod.POST)
+	@RequestMapping(value="/addSupplier",method = RequestMethod.POST)
 	 public String addSupplier(@Valid @ModelAttribute("supplier")Supplier supplier,ModelMap model,BindingResult result,HttpServletRequest request) {
 		
 		System.out.println("In add supplier method");
-		model.addAttribute("id",supplier.getId());
+		//model.addAttribute("id",supplier.getId());
 		model.addAttribute("address",supplier.getAddress());
 		model.addAttribute("name",supplier.getName());
 		
 		supplierDAO.saveOrUpdate(supplier);
 		return "login";
 	}
+                  
+	//----------Add supplier mapping------------//
+    @Autowired
+    Category category;
+    
+	@Autowired
+	CategoryDAO categoryDAO;
+	
+	@RequestMapping("/addCategory")
+	public ModelAndView showCategory(@ModelAttribute("category")Category category,BindingResult result,HttpServletRequest request)
+	{
+		ModelAndView mv=new ModelAndView("addCategory");
+	     return mv;	
+	}
+	@RequestMapping(value="/addCategory",method = RequestMethod.POST)
+	 public String addCategory(@Valid @ModelAttribute("category")Category category,ModelMap model,BindingResult result,HttpServletRequest request) {
+		
+		System.out.println("In add category method");
+		//model.addAttribute("catid",category.getCatid());
+		model.addAttribute("descriptions",category.getDescription());
+		
+		categoryDAO.saveOrUpdate(category);
+		return "login";
+	};
 
+	
+	/*@RequestMapping("/addCategory")
+	public ModelAndView showAddCategory(@Valid @ModelAttribute("category") Category c1, BindingResult result,
+			HttpServletRequest request) throws IOException {
 
+		System.out.println("In add category page");
+		return new ModelAndView("addCategory");
+
+	}*/
+	//----------Add category mapping------------//
+
+	
 @RequestMapping(value = "/deleteproduct&{id}")
 public ModelAndView deleteproduct(@PathVariable("id") String id) throws Exception 
 		{
@@ -178,7 +225,7 @@ public ModelAndView deleteproduct(@PathVariable("id") String id) throws Exceptio
 		}
 		
 
-@RequestMapping("/updateproduct")
+/*@RequestMapping("/updateproduct")
 public String show5() {
 	return "updateproduct";
 }
@@ -197,7 +244,7 @@ public String updateproduct(@PathVariable("id") String id,@ModelAttribute("produ
 	}
 	//log.debug("Ending");
 	return "manageproduct";
-}
+}*/
 }
 
 

@@ -20,18 +20,16 @@ import com.niit.online.onlinebooksbackend.dao.CategoryDAO;
 import com.niit.online.onlinebooksbackend.dao.CategoryDAOImpl;
 import com.niit.online.onlinebooksbackend.dao.ProductDAO;
 import com.niit.online.onlinebooksbackend.dao.ProductDAOImpl;
-//import com.niit.online.onlinebooksbackend.dao.ProductDAO;
-//import com.niit.online.onlinebooksbackend.dao.ProductDAOImpl;
 import com.niit.online.onlinebooksbackend.dao.SupplierDAO;
 import com.niit.online.onlinebooksbackend.dao.SupplierDAOImpl;
 import com.niit.online.onlinebooksbackend.dao.UserDAO;
 import com.niit.online.onlinebooksbackend.dao.UserDAOImpl;
+import com.niit.online.onlinebooksbackend.model.Cart;
 import com.niit.online.onlinebooksbackend.model.Category;
 import com.niit.online.onlinebooksbackend.model.Product;
-//import com.niit.online.onlinebooksbackend.model.Product;
-//simport com.niit.online.onlinebooksbackend.model.Product;
 import com.niit.online.onlinebooksbackend.model.Supplier;
 import com.niit.online.onlinebooksbackend.model.User;
+
 
 
 @Configuration
@@ -70,7 +68,7 @@ public class ApplicationContextConfig {
 	 sessionBuilder.addAnnotatedClasses(Supplier.class);
 	  sessionBuilder.addAnnotatedClasses(Product.class);
 	   
-	  // sessionBuilder.addAnnotatedClasses(Cart.class);
+	  sessionBuilder.addAnnotatedClasses(Cart.class);
 	  // sessionBuilder.addAnnotatedClasses(CartItem.class);
 	  // sessionBuilder.addAnnotatedClasses(Customer.class);
 	   

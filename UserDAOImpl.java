@@ -43,29 +43,30 @@ public class UserDAOImpl implements UserDAO {
 	
 	@Transactional//ACID either update evrgthg or not 
 	public boolean saveOrUpdate(User user) {
-		try {
+		/*try {
 		Session s=sessionFactory.getCurrentSession();
 		Transaction t=s.beginTransaction();
 		s.saveOrUpdate(user);
 		t.commit();//either comit or rollback transaction incomplete
-		return true;
+		return true;*/
 
-			/*sessionFactory.getCurrentSession().saveOrUpdate(user);
-			return true;*/
+			sessionFactory.getCurrentSession().saveOrUpdate(user);
+			return true;
 		} 
-		catch (Exception e) {
+		/*catch (Exception e) {
 			e.printStackTrace();
 		}
 		// TODO Auto-generated method stub
 		return false;
-	}
-    @Transactional
+	}*/
+    
+	@Transactional
 	public User getByName(String uname) {
     System.out.println("Inside get method");
 		
 		/*Session s=  sessionFactory.getCurrentSession();
 		Transaction tx=s.beginTransaction();*/
-		String str="From User where username='"+uname+"'";
+		String str="From User where username=" + "'" + uname + "'";
 		
 		Query query=sessionFactory.getCurrentSession().createQuery(str);
 		List<User>ulist=query.list();

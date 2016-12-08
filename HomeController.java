@@ -1,10 +1,9 @@
 package com.frontend.controller;
-import java.io.IOException;
-import java.io.PrintWriter;
+
 import java.util.Collection;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+//import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +19,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.niit.online.onlinebooksbackend.dao.CategoryDAO;
 import com.niit.online.onlinebooksbackend.dao.UserDAO;
-import com.niit.online.onlinebooksbackend.model.Category;
 import com.niit.online.onlinebooksbackend.model.User;
 
-//import com.niit.online.onlinebooksbackend.model.User;
 
 
 
@@ -39,16 +35,11 @@ public String showhome()
 	return "home";
 	}
   
-  
-  @Autowired
-  Category Category;
-  
-  @Autowired
-  CategoryDAO CategoryDAO;
-  
-
-  
-  
+  /*@RequestMapping("/register")
+  public String showreg()
+  {
+  	return "register";
+  	}*/
 
 //----------- admin page mapping------------//
 
@@ -130,7 +121,7 @@ public void checkuser(HttpServletRequest req,HttpServletResponse res) throws IOE
 UserDAO userDAO;
 @Autowired
 User user;
-@RequestMapping("/validate")
+/*@RequestMapping("/validate")
 public ModelAndView checkUser(HttpServletRequest request,HttpServletResponse response)
 		{
 	ModelAndView mv;
@@ -153,7 +144,7 @@ public ModelAndView checkUser(HttpServletRequest request,HttpServletResponse res
     public Object returnObject()
     {
     	return new User();
-    }
+    }*/
     
     @RequestMapping(value="/login_session_attributes")
 	public String login_session_attributes(HttpSession session,Model model,@RequestParam(value="username")String id){
@@ -214,10 +205,10 @@ public User returnobject() {
 }
 
 
-@RequestMapping("/Register")
-public ModelAndView showRegister(@ModelAttribute("user")User user,BindingResult result,HttpServletRequest request)
+@RequestMapping("/register")
+public ModelAndView showRegister(@ModelAttribute("us")User user,BindingResult result,HttpServletRequest request)
 {
-	ModelAndView mv=new ModelAndView("Register");
+	ModelAndView mv=new ModelAndView("register");
      return mv;	
 }
 @RequestMapping(value="/addUser",method = RequestMethod.POST)
@@ -230,6 +221,13 @@ public ModelAndView showRegister(@ModelAttribute("user")User user,BindingResult 
 	user.setEnabled("true");
 	user.setRole("ROLE_USER");
 	userDAO.saveOrUpdate(user);
+	return "login";
+}
+
+@RequestMapping("/comfirmDetails")
+public String detail()
+{
+	System.out.println("In confirmdetails mapping");
 	return "login";
 }
 }

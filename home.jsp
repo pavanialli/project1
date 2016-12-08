@@ -37,15 +37,15 @@ welcome ${info}
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
       <div class="item active">
-        <img src="resources/images/book.jpg" alt="book" width="1000" height="500">
+        <img src="resources/images/Book.jpg" alt="book" width="1500" height="500">
       </div>
       
       <div class="item">
-        <img src="resources/images/book1.jpg" alt="book1" width="1000" height="500">
+        <img src="resources/images/book1.jpg" alt="book1" width="1500" height="500">
       </div>
     
       <div class="item">
-        <img src="resources/images/book3.jpg" alt="book3" width="1000" height="500">
+        <img src="resources/images/book3.jpg" alt="book3" width="1500" height="500">
       </div>
     
     </div>
@@ -61,19 +61,20 @@ welcome ${info}
     </a>
   </div>
 </div>
-<center>
-<table>
-<tr><td><a href="comic.jpg"><img src="resources/images/comic.jpg" width="300" height="200"></a>
+<br>
+<br>
+<br>
+
+
+<tr><td><a href="comic.jpg"><img src="resources/images/comic.jpg" width="400" height="200"></a>
 </td>
 
-<td><a href="ent1.jpg"><img src="resources/images/ent1.jpg" width="300" height="200"></a>
+<td><a href="ent1.jpg"><img src="resources/images/ent1.jpg" width="500" height="200"></a>
 </td>
 
-<td><a href="bio.jpg"><img src="resources/images/bio.jpg" width="300" height="200"></a>
+<td><a href="bio.jpg"><img src="resources/images/bio.jpg" width="400" height="200"></a>
 </td></tr>
 
-</table>
-</center>
 </body>
 
 </html>

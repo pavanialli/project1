@@ -12,7 +12,7 @@
 </center>
 
 
-<form:form method="POST" action="addsupp" commandName="supplier">
+<form:form method="POST" action="addSupplier" commandName="supplier">
 
    <table>
     <tr>

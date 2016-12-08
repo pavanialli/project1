@@ -2,13 +2,16 @@ package com.niit.online.onlinebooksbackend.dao;
 
 import java.util.List;
 
+import com.niit.online.onlinebooksbackend.model.Category;
+
 
 
 public interface CategoryDAO {
 	
-	public boolean saverOrUpdate();
-	public boolean delete(CategoryDAOImpl category);
-	public CategoryDAO get(int id);
-	public List<CategoryDAO>list();
+	
+	public boolean delete(Category category);
+    public List<Category> list();
+	public boolean saveOrUpdate(Category category);
+	
 
 }

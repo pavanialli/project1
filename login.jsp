@@ -24,7 +24,7 @@ welcome ${info}
 <table border=3>
 <tr>
    <td>login id:</td>
-   <td><input type="text"name="username" placeholder="Enter only Capslock"/></td>
+   <td><input type="text"name="username" placeholder="enter name"/></td>
 </tr>
 
 <tr>

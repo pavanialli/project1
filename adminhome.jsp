@@ -32,7 +32,7 @@
         <ul class="dropdown-menu">
           <li><a href="#">Update Categorys</a></li>
           <li><a href="#">Delete Categorys</a></li>
-          <li><a href="#">Add Categorys</a></li>
+          <li><a href="addCategory">Add Categorys</a></li>
            <li><a href="#">View Categorys</a></li>
         </ul>
         </li>

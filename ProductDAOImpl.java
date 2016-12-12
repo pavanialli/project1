@@ -88,18 +88,18 @@ public class ProductDAOImpl implements ProductDAO {
     
     @Transactional
 	public boolean saverOrUpdate(Product product) {
-		try {
-			/*Session s = sessionfactory.getCurrentSession();
+		/*try {
+			Session s = sessionfactory.getCurrentSession();
 			Transaction t = s.beginTransaction();
 			s.saveOrUpdate(product);
 			t.commit();// either comit or rollback transaction incomplete
 			return true;*/
 			sessionfactory.getCurrentSession().saveOrUpdate(product);
 			return true;
-		} catch (Exception e) {
+		/*} catch (Exception e) {
 			e.printStackTrace();
 			return false;
-		}
+		}*/
 	}
 	
 }

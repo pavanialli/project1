@@ -198,7 +198,7 @@ public class products {
 		
 		categoryDAO.saveOrUpdate(category);
 		return "login";
-	};
+	}
 
 	
 	/*@RequestMapping("/addCategory")

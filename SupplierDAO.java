@@ -8,9 +8,21 @@ import com.niit.online.onlinebooksbackend.model.Supplier;
 
 public interface SupplierDAO {
 
-	//public boolean delete(Supplier supplier);
+    public boolean delete(Supplier supplier);
+    
 	public Supplier get(int id);
+	
+	// collection of supplier list
     public List<Supplier>list();
-	public boolean saveOrUpdate(Supplier supplier);
+
+    boolean saveOrUpdate(Supplier supplier);
+    
+    public boolean update(Supplier supplier);
+    
+    public Supplier getByName(String name);
 
 }
+
+
+
+	

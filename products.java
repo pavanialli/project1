@@ -158,7 +158,7 @@ public class products {
 	@Autowired
 	Supplier supplier;
 	
-	@RequestMapping("/addSupplier")
+	/*@RequestMapping("/addSupplier")
 	public ModelAndView showSupplier(@ModelAttribute("supplier")Supplier supplier,BindingResult result,HttpServletRequest request)
 	{
 		ModelAndView mv=new ModelAndView("addSupplier");
@@ -174,7 +174,7 @@ public class products {
 		
 		supplierDAO.saveOrUpdate(supplier);
 		return "login";
-	}
+	}*/
                   
 	//----------Add supplier mapping------------//
     @Autowired

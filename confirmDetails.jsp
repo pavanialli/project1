@@ -1,6 +1,14 @@
 <%@ include file="header.jsp" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <div class="content">
+
+<style>
+body {
+	background-image: url("resources/images/cd.jpg");no-repeat center center fixed;
+     background-size: cover;
+}
+</style>
+
 		<fieldset>
 			<legend>Confirm Details</legend><center>
 			<!-- for triggering webflow events using links,

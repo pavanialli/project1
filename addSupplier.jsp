@@ -10,7 +10,7 @@
 <body>
 <center>
 <h2>Supplier Information</h2>
-<form:form action="addSupplier" commandName="supplier">
+<form:form action="addSup" commandName="supplier">
 		<table>
 			<c:if test="${!empty supplier.name}">
 				<tr>

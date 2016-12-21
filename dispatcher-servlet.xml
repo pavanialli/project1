@@ -19,6 +19,22 @@ http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.0.x
 		where our controllers r present -->
 
 	<context:component-scan base-package="com" />
+	
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+        <property name="host" value="smtp.gmail.com" />
+        <property name="port" value="587" />
+        <!-- <property name="username" value="pavani1992" />
+        <property name="password" value="9949642237" /> -->
+        <property name="username" value="pavani.alli104" />
+        <property name="password" value="pavanialli104" />
+        <property name="javaMailProperties">
+            <props>
+                <prop key="mail.transport.protocol">smtp</prop>
+                <prop key="mail.smtp.auth">true</prop>
+                <prop key="mail.smtp.starttls.enable">true</prop>
+            </props>
+        </property>
+    </bean>
 
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">

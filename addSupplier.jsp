@@ -36,7 +36,8 @@
 			<tr>
 				<td colspan="2"><c:if test="${!empty supplier.name}">
 						<input type="submit" value="Edit supplier" />
-					</c:if> <c:if test="${empty supplier.name}">
+				 	</c:if></td> 
+				 	<td><c:if test="${empty supplier.name}">
 						<input type="submit" value="Add supplier" />
 					</c:if></td>
 			</tr>

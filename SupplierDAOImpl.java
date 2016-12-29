@@ -145,12 +145,14 @@ public class SupplierDAOImpl implements SupplierDAO {
 			System.out.println(s1.getId()+" "+s1.getName());
 		}
 		System.out.println("after list");
-		// t.commit();
-		if (list == null) {
-		*/	return list.get(0);
-        /*   } else {
-           System.out.println("geeeet supplier in impl");
-            return null;
-			}*/
+*/		// t.commit();
+		//if (list == null) {
+			return list.get(0);
+           //} else {
+           //System.out.println("geeeet supplier in impl");
+            //return null;
+			//}
 	}
-}
+	}
+
+

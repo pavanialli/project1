@@ -183,7 +183,7 @@ public class products {
 	@Autowired
 	CategoryDAO categoryDAO;
 	
-	@RequestMapping("/addCategory")
+	/*@RequestMapping("/addCategory")
 	public ModelAndView showCategory(@ModelAttribute("category")Category category,BindingResult result,HttpServletRequest request)
 	{
 		ModelAndView mv=new ModelAndView("addCategory");
@@ -199,7 +199,7 @@ public class products {
 		categoryDAO.saveOrUpdate(category);
 		return "login";
 	}
-
+*/
 	
 	/*@RequestMapping("/addCategory")
 	public ModelAndView showAddCategory(@Valid @ModelAttribute("category") Category c1, BindingResult result,
